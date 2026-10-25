@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ravi's four Telegram AI agents: InstaTrade AI, AstroGyan, Fit1st and SnapMediaAI.">
+<meta property="og:title" content="Ravi's Telegram Agents">
+<meta property="og:description" content="InstaTrade AI, AstroGyan, Fit1st and SnapMediaAI: what each one does and how to open it in Telegram.">
+<meta property="og:type" content="website">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ravi's Telegram Agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a directory of four bots. Each agent is a wide row: identity + sample chat on one side, features on the other. Accent per agent, quiet blue-grey ground. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #18202b;
+  --muted: #5b6676;
+  --line: #dde2e9;
+  --bubble-in: #eef1f5;
+  --bubble-out: #dcebfb;
+  --trade: #1f7a5a;
+  --astro: #b5541b;
+  --fit: #0f7c8c;
+  --snap: #c2364b;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --surface: #1a2029; --ink: #e8ecf2; --muted: #9aa5b4; --line: #2b3340;
+    --bubble-in: #232b36; --bubble-out: #1e3550;
+    --trade: #4cc08f; --astro: #ef9355; --fit: #3fc0d0; --snap: #f0697e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #1a2029; --ink: #e8ecf2; --muted: #9aa5b4; --line: #2b3340;
+  --bubble-in: #232b36; --bubble-out: #1e3550;
+  --trade: #4cc08f; --astro: #ef9355; --fit: #3fc0d0; --snap: #f0697e;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1rem/1.55 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 48px 64px; display: grid; gap: 40px; }
+
+header { display: grid; gap: 14px; }
+.kicker { font: 500 0.78rem/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(2.1rem, 5vw, 3.4rem)/1.05 var(--font-display); margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+.lede { margin: 0; max-width: 62ch; color: var(--muted); font-size: 1.08rem; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+nav a {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none;
+  font-weight: 500; font-size: 0.92rem;
+}
+nav a:hover, nav a:focus-visible { border-color: var(--a); outline: none; }
+nav a i { width: 9px; height: 9px; border-radius: 50%; background: var(--a); }
+
+.common { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 0.92rem; }
+.common li::before { content: "✓"; color: var(--ink); margin-right: 7px; font-weight: 600; }
+
+.agent {
+  --a: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); overflow: hidden;
+  scroll-margin-top: 16px;
+}
+.agent.trade { --a: var(--trade); } .agent.astro { --a: var(--astro); }
+.agent.fit { --a: var(--fit); } .agent.snap { --a: var(--snap); }
+
+.id { padding: 28px; display: grid; gap: 16px; align-content: start; border-right: 1px solid var(--line); }
+.id-top { display: flex; align-items: center; gap: 14px; }
+.badge {
+  width: 52px; height: 52px; border-radius: 14px; flex: none; display: grid; place-items: center;
+  background: var(--a); color: var(--surface); font: 700 1.25rem/1 var(--font-display);
+}
+h2 { font: 700 1.55rem/1.1 var(--font-display); margin: 0; letter-spacing: -0.01em; }
+.domain { font: 500 0.75rem/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.07em; color: var(--a); margin-top: 4px; }
+.pitch { margin: 0; color: var(--muted); }
+
+.chat { display: grid; gap: 8px; padding: 14px; border-radius: 12px; background: var(--bg); }
+.chat-label { font: 500 0.7rem/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.msg { max-width: 88%; padding: 8px 12px; border-radius: 12px; font-size: 0.9rem; line-height: 1.45; }
+.msg.me { justify-self: end; background: var(--bubble-out); border-bottom-right-radius: 4px; }
+.msg.bot { justify-self: start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.msg code, .cmds code { font: 400 0.85em var(--font-mono); }
+
+.open { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 10px;
+  background: var(--a); color: var(--surface); text-decoration: none; font-weight: 600; font-size: 0.92rem;
+}
+.btn:focus-visible { outline: 3px solid var(--line); outline-offset: 2px; }
+.handle { font: 400 0.85rem var(--font-mono); color: var(--muted); }
+.note { font-size: 0.82rem; color: var(--muted); width: 100%; margin: 0; }
+
+.detail { padding: 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
+.features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; margin: 0; padding: 0; list-style: none; }
+.features li { display: grid; gap: 3px; padding-left: 14px; border-left: 2px solid var(--line); }
+.features b { font-weight: 600; }
+.features span { color: var(--muted); font-size: 0.9rem; }
+.meta { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.row { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: baseline; }
+.row > em { font: 500 0.72rem/1.8 var(--font-mono); font-style: normal; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); min-width: 92px; }
+.cmds { display: flex; flex-wrap: wrap; gap: 6px; }
+.cmds code { padding: 2px 8px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); }
+.chip { font-size: 0.85rem; padding: 2px 9px; border-radius: 6px; background: var(--bg); color: var(--ink); }
+
+footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
+
+@media (max-width: 860px) {
+  .agent { grid-template-columns: minmax(0, 1fr); }
+  .id { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .wrap { padding-block: 28px 48px; gap: 28px; }
+  .id, .detail { padding: 20px; }
+  .features { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="kicker">Built by Ravi · 4 agents · all on Telegram</div>
+    <h1>Ravi's Telegram Agents</h1>
+    <p class="lede">Four AI assistants that live inside Telegram. One reads the stock market, one makes your daily Panchang, one looks after your health at the desk, and one edits your videos and photos. Talk to each of them in English, Hindi or Hinglish.</p>
+    <nav aria-label="Jump to an agent">
+      <a href="#instatrade" style="--a: var(--trade)"><i></i>InstaTrade AI</a>
+      <a href="#astrogyan" style="--a: var(--astro)"><i></i>AstroGyan</a>
+      <a href="#fit1st" style="--a: var(--fit)"><i></i>Fit1st</a>
+      <a href="#snapmediaai" style="--a: var(--snap)"><i></i>SnapMediaAI</a>
+    </nav>
+  </header>
+
+  <ul class="common" aria-label="What every agent has">
+    <li>Buttons and menus, no commands to remember</li>
+    <li>Plain-language AI chat</li>
+    <li>Daily limits and rate limits</li>
+    <li>Runs 24×7 on Render</li>
+  </ul>
+
+  <!-- InstaTrade -->
+  <section class="agent trade" id="instatrade">
+    <div class="id">
+      <div class="id-top">
+        <div class="badge" aria-hidden="true">IT</div>
+        <div><h2>InstaTrade AI</h2><div class="domain">Stock market &amp; trading</div></div>
+      </div>
+      <p class="pitch">Live technical analysis, smart-money liquidity maps, IPO details and a morning market report for Indian traders.</p>
+      <div class="chat" aria-label="Example chat">
+        <div class="chat-label">Example chat</div>
+        <div class="msg me">TITAN ka liquidity kya bol raha hai?</div>
+        <div class="msg bot"><b>Sweep:</b> none on the last closed candle<br><b>Above:</b> nearest BSL at the previous day high<br><b>Below:</b> SSL at equal lows (EQL)<br>5m and 1h disagree, so the picture is mixed.</div>
+      </div>
+      <div class="open">
+        <a class="btn" href="https://t.me/SweRa21_bot" target="_blank" rel="noopener">Open in Telegram</a>
+        <span class="handle">@SweRa21_bot</span>
+      </div>
+    </div>
+    <div class="detail">
+      <ul class="features">
+        <li><b>Stock analysis</b><span>Any NSE stock, index, gold or crypto on 5m, 15m, 1h and weekly charts</span></li>
+        <li><b>Indicators</b><span>RSI (Wilder, TradingView-style), intraday VWAP, 20/50 EMA, weekly pivots</span></li>
+        <li><b>Smart-money liquidity</b><span>Equal highs/lows, sweeps and stop-hunts, PDH/PDL, buy-side and sell-side pools</span></li>
+        <li><b>Morning report, 7 AM IST</b><span>GIFT Nifty, S&amp;P 500 and Nasdaq futures, crude oil, DXY, India VIX</span></li>
+        <li><b>IPOs</b><span>Open and upcoming Indian IPOs with price band and GMP</span></li>
+        <li><b>Scanner alerts</b><span>Swing-trade triggers and bullish/bearish intraday stocks</span></li>
+        <li><b>Watchlist</b><span>Track several stocks at once</span></li>
+        <li><b>AI analyst</b><span>Answers from live data only. Never gives buy/sell calls</span></li>
+      </ul>
+      <div class="meta">
+        <div class="row"><em>Commands</em><div class="cmds"><code>/stock</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Postgres</span><span class="chip">Render</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AstroGyan -->
+  <section class="agent astro" id="astrogyan">
+    <div class="id">
+      <div class="id-top">
+        <div class="badge" aria-hidden="true">AG</div>
+        <div><h2>AstroGyan</h2><div class="domain">Panchang, jyotish &amp; numerology</div></div>
+      </div>
+      <p class="pitch">Today's Panchang for your own city, your Mulank, daily Rashifal and festival muhurat, in English or हिंदी.</p>
+      <div class="chat" aria-label="Example chat">
+        <div class="chat-label">Example chat</div>
+        <div class="msg me">आज का पंचांग</div>
+        <div class="msg bot">🌞 <b>तिथि, नक्षत्र</b>, सूर्योदय और सूर्यास्त, राहु काल, आपके शहर के हिसाब से।</div>
+      </div>
+      <div class="open">
+        <a class="btn" href="https://t.me/AstroGyan21_bot" target="_blank" rel="noopener">Open in Telegram</a>
+        <span class="handle">@AstroGyan21_bot</span>
+      </div>
+    </div>
+    <div class="detail">
+      <ul class="features">
+        <li><b>Daily Panchang</b><span>Tithi, nakshatra, sunrise, sunset and Rahu kaal for your city</span></li>
+        <li><b>Numerology</b><span>Mulank, Bhagyank and lucky number, colour and day from your birth date</span></li>
+        <li><b>Rashifal</b><span>Today's horoscope for all 12 rashis</span></li>
+        <li><b>Kundali PDF</b><span>A 5-page birth-chart report</span></li>
+        <li><b>Festivals &amp; muhurat</b><span>Upcoming festivals with puja vidhi, mantra and muhurat for your city; a 9-day Navratri guide</span></li>
+        <li><b>6 AM subscription</b><span>Panchang and Rashifal every morning, in your language</span></li>
+        <li><b>Ask anything</b><span>AI answers in English or हिंदी</span></li>
+        <li><b>Free calculations</b><span>Swiss Ephemeris on the bot's own server, with no paid API and no daily limit</span></li>
+      </ul>
+      <div class="meta">
+        <div class="row"><em>Commands</em><div class="cmds"><code>/panchang</code><code>/numerology</code><code>/rashifal</code><code>/kundali</code><code>/festivals</code><code>/ask</code><code>/subscribe</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Swiss Ephemeris</span><span class="chip">Claude</span><span class="chip">Render</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit1st -->
+  <section class="agent fit" id="fit1st">
+    <div class="id">
+      <div class="id-top">
+        <div class="badge" aria-hidden="true">F1</div>
+        <div><h2>Fit1st</h2><div class="domain">Health for desk workers</div></div>
+      </div>
+      <p class="pitch">Scan your meals, track water, take guided breathing and stretch breaks, and get gentle reminders through the work day.</p>
+      <div class="chat" aria-label="Example chat">
+        <div class="chat-label">Example chat</div>
+        <div class="msg me">500 ml paani piya</div>
+        <div class="msg bot">💧 Logged 500 ml. Here's how far you are from today's goal.</div>
+      </div>
+      <div class="open">
+        <a class="btn" href="https://t.me/Fit1st_bot" target="_blank" rel="noopener">Open in Telegram</a>
+        <span class="handle">@Fit1st_bot</span>
+      </div>
+    </div>
+    <div class="detail">
+      <ul class="features">
+        <li><b>Food scan</b><span>Send a meal photo for calories, protein, carbs and fat. Barcodes and nutrition labels work too</span></li>
+        <li><b>Water tracker</b><span>Daily goal, one-tap logging, progress</span></li>
+        <li><b>Guided breathing</b><span>Box breathing, 4-7-8 and a quick calm, in live guided sessions</span></li>
+        <li><b>Desk breaks</b><span>Desk stretches, the 20-20-20 eye break and a posture check</span></li>
+        <li><b>Work-hour reminders</b><span>Posture, breathing and water, Mon–Fri 8 AM–5 PM in your own time zone</span></li>
+        <li><b>BMI check</b><span>A one-tap form inside Telegram with a full report</span></li>
+        <li><b>Snack ideas</b><span>Healthy options for the desk</span></li>
+        <li><b>AI coach</b><span>"Aaj maine kya khaya?" is answered from your own logs. Wellness only, never medical advice</span></li>
+      </ul>
+      <div class="meta">
+        <div class="row"><em>Commands</em><div class="cmds"><code>/bmi</code><code>/timezone</code><code>/mydata</code><code>/privacy</code><code>/deleteme</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Claude vision</span><span class="chip">Open Food Facts</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SnapMediaAI -->
+  <section class="agent snap" id="snapmediaai">
+    <div class="id">
+      <div class="id-top">
+        <div class="badge" aria-hidden="true">SM</div>
+        <div><h2>SnapMediaAI</h2><div class="domain">Video &amp; photo editing</div></div>
+      </div>
+      <p class="pitch">Cut, join, convert and touch up videos and photos right in the chat. Send a file or an Instagram/Facebook link and tap a button.</p>
+      <div class="chat" aria-label="Example chat">
+        <div class="chat-label">Example chat</div>
+        <div class="msg me">pehle 10 second hata do</div>
+        <div class="msg bot">✂️ Cut from 0:10 to the end. 🎯 Exact or ⚡ Fast?</div>
+      </div>
+      <div class="open">
+        <a class="btn" href="https://t.me/SnapMediaAIBot" target="_blank" rel="noopener">Open in Telegram</a>
+        <span class="handle">@SnapMediaAIBot</span>
+        <p class="note">Invite only for now: the bot answers approved Telegram accounts.</p>
+      </div>
+    </div>
+    <div class="detail">
+      <ul class="features">
+        <li><b>Cut &amp; join</b><span>Keep several parts and join them. 🎯 Exact or ⚡ Fast (no re-encoding)</span></li>
+        <li><b>Audio &amp; music</b><span>Extract MP3/AAC, or put a song over a video</span></li>
+        <li><b>Photo reels</b><span>Up to 30 photos into a 1080×1920 reel, 1–5 s each, with music</span></li>
+        <li><b>Quick video edits</b><span>9:16, 1:1, 16:9, compress, 2x / 0.5x, mute, GIF, thumbnail, rotate, loop</span></li>
+        <li><b>Photo touch-ups</b><span>Auto, Brighter, Vivid, Warm, B&amp;W, brightness/contrast amounts, Instagram crops, denoise, 2x upscale. Faces never change</span></li>
+        <li><b>Links</b><span>Public Instagram and Facebook reels; YouTube in beta</span></li>
+        <li><b>Big files</b><span>Up to 200 MB in, large results sent without compression</span></li>
+        <li><b>Watermark removal (beta)</b><span>Circle the mark in red on your own file and it's filled in</span></li>
+      </ul>
+      <div class="meta">
+        <div class="row"><em>Commands</em><div class="cmds"><code>/cut</code><code>/audio</code><code>/addmusic</code><code>/reel</code><code>/queue</code><code>/privacy</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">FastAPI</span><span class="chip">FFmpeg</span><span class="chip">Telethon</span><span class="chip">Gemini</span><span class="chip">Render</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Fit1st and SnapMediaAI explain what they keep with <code>/privacy</code> and erase it with <code>/deleteme</code>.</span>
+    <span>InstaTrade AI shares market data and education only. It is not investment advice.</span>
+  </footer>
+</div>
+</body>
+</html>
