@@ -105,6 +105,16 @@ h2 { font: 700 1.55rem/1.1 var(--font-display); margin: 0; letter-spacing: -0.01
 .handle { font: 400 0.85rem var(--font-mono); color: var(--muted); }
 .note { font-size: 0.82rem; color: var(--muted); width: 100%; margin: 0; }
 
+.markets { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.markets li { display: grid; gap: 2px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); }
+.markets b { font-weight: 600; color: var(--a); }
+.markets span { color: var(--muted); font-size: 0.88rem; }
+.msg.photo { display: grid; gap: 6px; padding: 6px; }
+.msg.photo .plate { display: grid; place-items: center; width: 150px; max-width: 100%; aspect-ratio: 4 / 3; border-radius: 9px; font-size: 3.4rem; background: var(--surface); }
+.msg.photo > span:last-child { padding: 0 6px 2px; font-size: 0.85rem; }
+.macros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+.macros > span { display: grid; padding: 6px 8px; border-radius: 8px; background: var(--bg); font-size: 0.75rem; color: var(--muted); text-align: center; }
+.macros b { font: 700 1rem/1.2 var(--font-display); color: var(--a); }
 .detail { padding: 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
 .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; margin: 0; padding: 0; list-style: none; }
 .features li { display: grid; gap: 3px; padding-left: 14px; border-left: 2px solid var(--line); }
@@ -177,7 +187,12 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <div class="badge" aria-hidden="true">IT</div>
         <div><h2>InstaTrade AI</h2><div class="domain">Stock market &amp; trading</div></div>
       </div>
-      <p class="pitch">Multi-timeframe technical analysis with a smart-money liquidity map, a morning market report, live IPO and GMP tracking, and scanner alerts for Indian and global markets.</p>
+      <p class="pitch">One bot for three markets: multi-timeframe technical analysis with a smart-money liquidity map, a morning market report, live IPO and GMP tracking, and scanner alerts.</p>
+      <ul class="markets" aria-label="Markets covered">
+        <li><b>🇮🇳 Indian market</b><span>NSE stocks, Nifty, Bank Nifty, Nifty IT, Sensex, IPOs</span></li>
+        <li><b>🇺🇸 US market</b><span>US stocks like NVDA and AAPL, S&amp;P 500 and Nasdaq futures</span></li>
+        <li><b>₿ Crypto</b><span>Bitcoin, Ethereum, Solana and more, 24×7</span></li>
+      </ul>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
         <div class="msg me">What is smart money doing in Titan?</div>
@@ -190,7 +205,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
     </div>
     <div class="detail">
       <ul class="features">
-        <li><b>Stock analysis</b><span>Price, RSI, EMA 20/50, VWAP, volume and weekly pivot targets for NSE stocks, indices, US stocks, commodities and crypto</span></li>
+        <li><b>Stock analysis</b><span>Price, RSI, EMA 20/50, VWAP, volume and weekly pivot targets for Indian and US stocks, indices, crypto, gold, silver and crude</span></li>
         <li><b>Smart-money liquidity map</b><span>Structure and sweeps on 5m, 15m and 1h; buy-side and sell-side liquidity, equal highs/lows, previous-day high/low</span></li>
         <li><b>Morning report, 8:30 AM IST</b><span>GIFT Nifty, S&amp;P 500 and Nasdaq futures, crude, gold, dollar index, India VIX and an overall sentiment</span></li>
         <li><b>IPO tracker</b><span>Open and upcoming IPOs with price band, GMP, estimated listing, allotment and listing dates</span></li>
@@ -200,7 +215,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <li><b>Holiday aware</b><span>No report or scans on NSE holidays; still runs on Muhurat trading day</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/stock TITAN</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/stock TITAN</code><code>/stock NVDA</code><code>/stock BTC</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
         <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Render</span></div>
       </div>
     </div>
@@ -249,11 +264,12 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <div class="badge" aria-hidden="true">F1</div>
         <div><h2>Fit1st</h2><div class="domain">Health for desk workers</div></div>
       </div>
-      <p class="pitch">Scan meals and barcodes, track water, take guided breathing and stretch breaks, and get gentle reminders through the work day.</p>
+      <p class="pitch">Snap a photo of your meal and get calories, protein, carbs and fat in seconds. Plus barcode lookup, water tracking, guided breathing, stretch breaks and work-day reminders.</p>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
-        <div class="msg me">I drank 2 glasses of water</div>
-        <div class="msg bot">💧 Added 500 ml. Here's how close you are to today's goal.</div>
+        <div class="msg me photo"><span class="plate" aria-hidden="true">🍛</span><span>2 rotis with dal</span></div>
+        <div class="msg bot">📸 <b>2 rotis + 1 bowl dal</b><br>≈ 420 kcal
+          <span class="macros"><span><b>16 g</b>Protein</span><span><b>66 g</b>Carbs</span><span><b>12 g</b>Fat</span></span></div>
       </div>
       <div class="open">
         <a class="btn" href="https://t.me/Fit1st_bot" target="_blank" rel="noopener">Open in Telegram</a>
