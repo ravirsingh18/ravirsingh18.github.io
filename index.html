@@ -117,6 +117,22 @@ h2 { font: 700 1.55rem/1.1 var(--font-display); margin: 0; letter-spacing: -0.01
 .cmds code { padding: 2px 8px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); }
 .chip { font-size: 0.85rem; padding: 2px 9px; border-radius: 6px; background: var(--bg); color: var(--ink); }
 
+.contact {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px 40px; align-items: center;
+  scroll-margin-top: 16px;
+}
+.contact-intro { display: grid; gap: 10px; }
+.contact-list { margin: 0; display: grid; gap: 14px; }
+.contact-list > div { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.contact-list > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.contact-list dt { font: 500 0.72rem/1.8 var(--font-mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); min-width: 120px; }
+.contact-list dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; min-width: 0; }
+.contact-list dd a { color: var(--ink); font-weight: 600; font-size: 1.05rem; text-decoration: none; overflow-wrap: anywhere; user-select: all; }
+.contact-list dd a:hover, .contact-list dd a:focus-visible { text-decoration: underline; outline: none; }
+.contact-list dd a.wa { font: 500 0.82rem var(--font-body); color: var(--fit); user-select: auto; }
+@media (max-width: 860px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .contact { padding: 20px; } }
 footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
 
 @media (max-width: 860px) {
@@ -143,6 +159,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
       <a href="#astrogyan" style="--a: var(--astro)"><i></i>AstroGyan</a>
       <a href="#fit1st" style="--a: var(--fit)"><i></i>Fit1st</a>
       <a href="#snapmediaai" style="--a: var(--snap)"><i></i>SnapMediaAI</a>
+      <a href="#contact" style="--a: var(--ink)"><i></i>Contact</a>
     </nav>
   </header>
 
@@ -178,13 +195,13 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <li><b>Morning report, 8:30 AM IST</b><span>GIFT Nifty, S&amp;P 500 and Nasdaq futures, crude, gold, dollar index, India VIX and an overall sentiment</span></li>
         <li><b>IPO tracker</b><span>Open and upcoming IPOs with price band, GMP, estimated listing, allotment and listing dates</span></li>
         <li><b>Scanner alerts</b><span>Three Chartink scanners checked every hour in market hours. Only new stocks are alerted</span></li>
-        <li><b>Watchlist</b><span>Up to 10 symbols in one go. The list is remembered for next time</span></li>
-        <li><b>AI analyst</b><span>Answers from live data, remembers the conversation for 15 minutes, and follows up ("and its support?")</span></li>
+        <li><b>Watchlist</b><span>Up to 10 symbols in one go; a plain /watchlist repeats your last list</span></li>
+        <li><b>AI analyst</b><span>Answers from live market data and understands follow-ups ("and its support?")</span></li>
         <li><b>Holiday aware</b><span>No report or scans on NSE holidays; still runs on Muhurat trading day</span></li>
       </ul>
       <div class="meta">
         <div class="row"><em>Commands</em><div class="cmds"><code>/stock TITAN</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
-        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
@@ -220,7 +237,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
       </ul>
       <div class="meta">
         <div class="row"><em>Commands</em><div class="cmds"><code>/panchang</code><code>/rashifal</code><code>/numerology</code><code>/festivals</code><code>/navratri</code><code>/ask</code><code>/subscribe</code></div></div>
-        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Swiss Ephemeris</span><span class="chip">Claude</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Swiss Ephemeris</span><span class="chip">Claude</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
@@ -236,7 +253,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
         <div class="msg me">I drank 2 glasses of water</div>
-        <div class="msg bot">💧 Logged 500 ml. Here's today's total against your goal.</div>
+        <div class="msg bot">💧 Added 500 ml. Here's how close you are to today's goal.</div>
       </div>
       <div class="open">
         <a class="btn" href="https://t.me/Fit1st_bot" target="_blank" rel="noopener">Open in Telegram</a>
@@ -247,16 +264,16 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
       <ul class="features">
         <li><b>Food scan</b><span>A meal photo gives items, portions, calories, protein, carbs and fat. Reads nutrition labels too</span></li>
         <li><b>Barcode lookup</b><span>Product nutrition from Open Food Facts with health flags and Nutri-Score. Free and unlimited</span></li>
-        <li><b>Water tracker</b><span>Daily goal, one-tap +250 / +500 ml, progress bar and today's log</span></li>
+        <li><b>Water tracker</b><span>Daily goal, one-tap +250 / +500 ml and a progress bar</span></li>
         <li><b>Guided breathing</b><span>Box, 4-7-8 and quick-calm breathing in one live-updating message</span></li>
         <li><b>Posture breaks</b><span>A 2-minute desk stretch, the 20-20-20 eye break and a desk-setup checklist</span></li>
         <li><b>BMI health check</b><span>A one-tap form with BMI, healthy weight range and your daily calories</span></li>
         <li><b>Work-day reminders</b><span>Posture, breathing and water, Mon–Fri 8 AM–5 PM in your own time zone</span></li>
-        <li><b>AI coach</b><span>"What did I eat today?" is answered from your own logs. Wellness only, never medical advice</span></li>
+        <li><b>AI coach</b><span>Ask "What did I eat today?" or "Remind me to drink water". Wellness only, never medical advice</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/food</code><code>/water</code><code>/breathe</code><code>/posture</code><code>/bmiform</code><code>/snack</code><code>/timezone</code><code>/privacy</code></div></div>
-        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Claude vision</span><span class="chip">Open Food Facts</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/food</code><code>/water</code><code>/breathe</code><code>/posture</code><code>/bmiform</code><code>/snack</code><code>/timezone</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Claude vision</span><span class="chip">Open Food Facts</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
@@ -292,14 +309,26 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <li><b>Watermark removal (beta)</b><span>Circle the mark in red on your own file and it's filled in</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/cut</code><code>/audio</code><code>/addmusic</code><code>/reel</code><code>/queue</code><code>/privacy</code></div></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/cut</code><code>/audio</code><code>/addmusic</code><code>/reel</code><code>/queue</code></div></div>
         <div class="row"><em>Built with</em><span class="chip">FastAPI</span><span class="chip">FFmpeg</span><span class="chip">Telethon</span><span class="chip">Gemini</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
 
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact-intro">
+      <div class="kicker">Contact us</div>
+      <h2 id="contact-title">Ravi Ranjan Singh</h2>
+      <p class="pitch">Creator of InstaTrade AI, AstroGyan, Fit1st and SnapMediaAI. Get in touch for access, feedback or a custom Telegram agent.</p>
+    </div>
+    <dl class="contact-list">
+      <div><dt>Email</dt><dd><a href="mailto:ravi.social18@gmail.com">ravi.social18@gmail.com</a></dd></div>
+      <div><dt>Mobile (UAE)</dt><dd><a href="tel:+971556721839">+971 55 672 1839</a><a class="wa" href="https://wa.me/971556721839" target="_blank" rel="noopener">WhatsApp</a></dd></div>
+      <div><dt>Mobile (India)</dt><dd><a href="tel:+917827489748">+91 78274 89748</a><a class="wa" href="https://wa.me/917827489748" target="_blank" rel="noopener">WhatsApp</a></dd></div>
+    </dl>
+  </section>
+
   <footer>
-    <span>Fit1st and SnapMediaAI explain what they keep with <code>/privacy</code> and erase it with <code>/deleteme</code>.</span>
     <span>InstaTrade AI is for educational purposes only, not investment advice. AstroGyan reports are general guidance, not certain predictions.</span>
   </footer>
 </div>
