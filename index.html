@@ -137,7 +137,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
   <header>
     <div class="kicker">Built by Ravi · 4 agents · all on Telegram</div>
     <h1>Ravi's Telegram Agents</h1>
-    <p class="lede">Four AI assistants that live inside Telegram. One reads the stock market, one makes your daily Panchang, one looks after your health at the desk, and one edits your videos and photos. Talk to each of them in English, Hindi or Hinglish.</p>
+    <p class="lede">Four AI assistants that live inside Telegram. One reads the stock market, one makes your daily Panchang, one looks after your health at the desk, and one edits your videos and photos. Each one understands plain English, and Hindi or Hinglish too.</p>
     <nav aria-label="Jump to an agent">
       <a href="#instatrade" style="--a: var(--trade)"><i></i>InstaTrade AI</a>
       <a href="#astrogyan" style="--a: var(--astro)"><i></i>AstroGyan</a>
@@ -160,11 +160,11 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <div class="badge" aria-hidden="true">IT</div>
         <div><h2>InstaTrade AI</h2><div class="domain">Stock market &amp; trading</div></div>
       </div>
-      <p class="pitch">Live technical analysis, smart-money liquidity maps, IPO details and a morning market report for Indian traders.</p>
+      <p class="pitch">Multi-timeframe technical analysis with a smart-money liquidity map, a morning market report, live IPO and GMP tracking, and scanner alerts for Indian and global markets.</p>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
-        <div class="msg me">TITAN ka liquidity kya bol raha hai?</div>
-        <div class="msg bot"><b>Sweep:</b> none on the last closed candle<br><b>Above:</b> nearest BSL at the previous day high<br><b>Below:</b> SSL at equal lows (EQL)<br>5m and 1h disagree, so the picture is mixed.</div>
+        <div class="msg me">What is smart money doing in Titan?</div>
+        <div class="msg bot"><b>Sweep:</b> checked on the last closed 5m, 15m and 1h candles<br><b>Above:</b> nearest buy-side liquidity<br><b>Below:</b> nearest sell-side liquidity<br>Levels to watch, never a buy/sell call.</div>
       </div>
       <div class="open">
         <a class="btn" href="https://t.me/SweRa21_bot" target="_blank" rel="noopener">Open in Telegram</a>
@@ -173,18 +173,18 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
     </div>
     <div class="detail">
       <ul class="features">
-        <li><b>Stock analysis</b><span>Any NSE stock, index, gold or crypto on 5m, 15m, 1h and weekly charts</span></li>
-        <li><b>Indicators</b><span>RSI (Wilder, TradingView-style), intraday VWAP, 20/50 EMA, weekly pivots</span></li>
-        <li><b>Smart-money liquidity</b><span>Equal highs/lows, sweeps and stop-hunts, PDH/PDL, buy-side and sell-side pools</span></li>
-        <li><b>Morning report, 7 AM IST</b><span>GIFT Nifty, S&amp;P 500 and Nasdaq futures, crude oil, DXY, India VIX</span></li>
-        <li><b>IPOs</b><span>Open and upcoming Indian IPOs with price band and GMP</span></li>
-        <li><b>Scanner alerts</b><span>Swing-trade triggers and bullish/bearish intraday stocks</span></li>
-        <li><b>Watchlist</b><span>Track several stocks at once</span></li>
-        <li><b>AI analyst</b><span>Answers from live data only. Never gives buy/sell calls</span></li>
+        <li><b>Stock analysis</b><span>Price, RSI, EMA 20/50, VWAP, volume and weekly pivot targets for NSE stocks, indices, US stocks, commodities and crypto</span></li>
+        <li><b>Smart-money liquidity map</b><span>Structure and sweeps on 5m, 15m and 1h; buy-side and sell-side liquidity, equal highs/lows, previous-day high/low</span></li>
+        <li><b>Morning report, 8:30 AM IST</b><span>GIFT Nifty, S&amp;P 500 and Nasdaq futures, crude, gold, dollar index, India VIX and an overall sentiment</span></li>
+        <li><b>IPO tracker</b><span>Open and upcoming IPOs with price band, GMP, estimated listing, allotment and listing dates</span></li>
+        <li><b>Scanner alerts</b><span>Three Chartink scanners checked every hour in market hours. Only new stocks are alerted</span></li>
+        <li><b>Watchlist</b><span>Up to 10 symbols in one go. The list is remembered for next time</span></li>
+        <li><b>AI analyst</b><span>Answers from live data, remembers the conversation for 15 minutes, and follows up ("and its support?")</span></li>
+        <li><b>Holiday aware</b><span>No report or scans on NSE holidays; still runs on Muhurat trading day</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/stock</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
-        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Postgres</span><span class="chip">Render</span></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/stock TITAN</code><code>/watchlist</code><code>/ipo</code><code>/morning</code><code>/ask</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">yfinance</span><span class="chip">Gemini</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
@@ -194,13 +194,13 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
     <div class="id">
       <div class="id-top">
         <div class="badge" aria-hidden="true">AG</div>
-        <div><h2>AstroGyan</h2><div class="domain">Panchang, jyotish &amp; numerology</div></div>
+        <div><h2>AstroGyan</h2><div class="domain">Vedic astrology &amp; numerology</div></div>
       </div>
-      <p class="pitch">Today's Panchang for your own city, your Mulank, daily Rashifal and festival muhurat, in English or हिंदी.</p>
+      <p class="pitch">Daily Panchang for your city, Moon-sign Rashifal, numerology, festival muhurat and Kundali reports. Everything is calculated with the Swiss Ephemeris, with no paid astrology API.</p>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
-        <div class="msg me">आज का पंचांग</div>
-        <div class="msg bot">🌞 <b>तिथि, नक्षत्र</b>, सूर्योदय और सूर्यास्त, राहु काल, आपके शहर के हिसाब से।</div>
+        <div class="msg me">I'm a Leo, how is today?</div>
+        <div class="msg bot">✨ Today's Rashifal for Leo, based on today's real Moon transit, with your lucky number and colour.</div>
       </div>
       <div class="open">
         <a class="btn" href="https://t.me/AstroGyan21_bot" target="_blank" rel="noopener">Open in Telegram</a>
@@ -209,18 +209,18 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
     </div>
     <div class="detail">
       <ul class="features">
-        <li><b>Daily Panchang</b><span>Tithi, nakshatra, sunrise, sunset and Rahu kaal for your city</span></li>
-        <li><b>Numerology</b><span>Mulank, Bhagyank and lucky number, colour and day from your birth date</span></li>
-        <li><b>Rashifal</b><span>Today's horoscope for all 12 rashis</span></li>
-        <li><b>Kundali PDF</b><span>A 5-page birth-chart report</span></li>
-        <li><b>Festivals &amp; muhurat</b><span>Upcoming festivals with puja vidhi, mantra and muhurat for your city; a 9-day Navratri guide</span></li>
-        <li><b>6 AM subscription</b><span>Panchang and Rashifal every morning, in your language</span></li>
-        <li><b>Ask anything</b><span>AI answers in English or हिंदी</span></li>
-        <li><b>Free calculations</b><span>Swiss Ephemeris on the bot's own server, with no paid API and no daily limit</span></li>
+        <li><b>Panchang</b><span>Tithi, paksha, nakshatra, sunrise, sunset and Abhijit Muhurat for your city</span></li>
+        <li><b>Rashifal</b><span>Daily horoscope for all 12 Moon signs from the real Moon transit (Chandra Gochar)</span></li>
+        <li><b>Numerology</b><span>Mulank, Bhagyank, nature, lucky numbers, day and colour, and remedies</span></li>
+        <li><b>Festivals &amp; muhurat</b><span>Upcoming festivals with significance, puja vidhi, mantra and shubh muhurat for your city</span></li>
+        <li><b>Navratri guide</b><span>All nine days with each day's Devi, colour, bhog and mantra</span></li>
+        <li><b>Kundali PDF</b><span>Short (5 pages) or Detailed (10–15 pages) Vedic report from a simple form. Coming soon for everyone</span></li>
+        <li><b>Daily 6 AM message</b><span>Panchang and all 12 Rashifals at 6 AM in your own time zone</span></li>
+        <li><b>AI astrologer</b><span>Ask anything in English or Hindi. Answers come from the bot's own calculations</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/panchang</code><code>/numerology</code><code>/rashifal</code><code>/kundali</code><code>/festivals</code><code>/ask</code><code>/subscribe</code></div></div>
-        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Swiss Ephemeris</span><span class="chip">Claude</span><span class="chip">Render</span></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/panchang</code><code>/rashifal</code><code>/numerology</code><code>/festivals</code><code>/navratri</code><code>/ask</code><code>/subscribe</code></div></div>
+        <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Swiss Ephemeris</span><span class="chip">Claude</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
       </div>
     </div>
   </section>
@@ -232,11 +232,11 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
         <div class="badge" aria-hidden="true">F1</div>
         <div><h2>Fit1st</h2><div class="domain">Health for desk workers</div></div>
       </div>
-      <p class="pitch">Scan your meals, track water, take guided breathing and stretch breaks, and get gentle reminders through the work day.</p>
+      <p class="pitch">Scan meals and barcodes, track water, take guided breathing and stretch breaks, and get gentle reminders through the work day.</p>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
-        <div class="msg me">500 ml paani piya</div>
-        <div class="msg bot">💧 Logged 500 ml. Here's how far you are from today's goal.</div>
+        <div class="msg me">I drank 2 glasses of water</div>
+        <div class="msg bot">💧 Logged 500 ml. Here's today's total against your goal.</div>
       </div>
       <div class="open">
         <a class="btn" href="https://t.me/Fit1st_bot" target="_blank" rel="noopener">Open in Telegram</a>
@@ -245,17 +245,17 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
     </div>
     <div class="detail">
       <ul class="features">
-        <li><b>Food scan</b><span>Send a meal photo for calories, protein, carbs and fat. Barcodes and nutrition labels work too</span></li>
-        <li><b>Water tracker</b><span>Daily goal, one-tap logging, progress</span></li>
-        <li><b>Guided breathing</b><span>Box breathing, 4-7-8 and a quick calm, in live guided sessions</span></li>
-        <li><b>Desk breaks</b><span>Desk stretches, the 20-20-20 eye break and a posture check</span></li>
-        <li><b>Work-hour reminders</b><span>Posture, breathing and water, Mon–Fri 8 AM–5 PM in your own time zone</span></li>
-        <li><b>BMI check</b><span>A one-tap form inside Telegram with a full report</span></li>
-        <li><b>Snack ideas</b><span>Healthy options for the desk</span></li>
-        <li><b>AI coach</b><span>"Aaj maine kya khaya?" is answered from your own logs. Wellness only, never medical advice</span></li>
+        <li><b>Food scan</b><span>A meal photo gives items, portions, calories, protein, carbs and fat. Reads nutrition labels too</span></li>
+        <li><b>Barcode lookup</b><span>Product nutrition from Open Food Facts with health flags and Nutri-Score. Free and unlimited</span></li>
+        <li><b>Water tracker</b><span>Daily goal, one-tap +250 / +500 ml, progress bar and today's log</span></li>
+        <li><b>Guided breathing</b><span>Box, 4-7-8 and quick-calm breathing in one live-updating message</span></li>
+        <li><b>Posture breaks</b><span>A 2-minute desk stretch, the 20-20-20 eye break and a desk-setup checklist</span></li>
+        <li><b>BMI health check</b><span>A one-tap form with BMI, healthy weight range and your daily calories</span></li>
+        <li><b>Work-day reminders</b><span>Posture, breathing and water, Mon–Fri 8 AM–5 PM in your own time zone</span></li>
+        <li><b>AI coach</b><span>"What did I eat today?" is answered from your own logs. Wellness only, never medical advice</span></li>
       </ul>
       <div class="meta">
-        <div class="row"><em>Commands</em><div class="cmds"><code>/bmi</code><code>/timezone</code><code>/mydata</code><code>/privacy</code><code>/deleteme</code></div></div>
+        <div class="row"><em>Commands</em><div class="cmds"><code>/food</code><code>/water</code><code>/breathe</code><code>/posture</code><code>/bmiform</code><code>/snack</code><code>/timezone</code><code>/privacy</code></div></div>
         <div class="row"><em>Built with</em><span class="chip">Python</span><span class="chip">Claude vision</span><span class="chip">Open Food Facts</span><span class="chip">Neon Postgres</span><span class="chip">Render</span></div>
       </div>
     </div>
@@ -271,7 +271,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
       <p class="pitch">Cut, join, convert and touch up videos and photos right in the chat. Send a file or an Instagram/Facebook link and tap a button.</p>
       <div class="chat" aria-label="Example chat">
         <div class="chat-label">Example chat</div>
-        <div class="msg me">pehle 10 second hata do</div>
+        <div class="msg me">Remove the first 10 seconds</div>
         <div class="msg bot">✂️ Cut from 0:10 to the end. 🎯 Exact or ⚡ Fast?</div>
       </div>
       <div class="open">
@@ -300,7 +300,7 @@ footer { color: var(--muted); font-size: 0.88rem; display: grid; gap: 6px; }
 
   <footer>
     <span>Fit1st and SnapMediaAI explain what they keep with <code>/privacy</code> and erase it with <code>/deleteme</code>.</span>
-    <span>InstaTrade AI shares market data and education only. It is not investment advice.</span>
+    <span>InstaTrade AI is for educational purposes only, not investment advice. AstroGyan reports are general guidance, not certain predictions.</span>
   </footer>
 </div>
 </body>
